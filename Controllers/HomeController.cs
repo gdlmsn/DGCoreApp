@@ -11,6 +11,7 @@ namespace DGCoreApp.Controllers
     {
         public IActionResult Index()
         {
+            
             return View();
         }
 
