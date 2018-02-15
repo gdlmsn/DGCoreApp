@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { MatButtonModule, MatSlideToggleModule} from '@angular/material';
 
 import { AppComponent } from './components/app/app.component';
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
@@ -23,6 +24,9 @@ import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.com
         CommonModule,
         HttpClientModule,
         FormsModule,
+
+        MatButtonModule,
+        MatSlideToggleModule,
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'vehicles/new', component: VehicleFormComponent },
