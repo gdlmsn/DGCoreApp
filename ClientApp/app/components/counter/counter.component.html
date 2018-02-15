@@ -4,5 +4,6 @@
 
 <p>Current count: <strong>{{ currentCount }}</strong></p>
 
-<button mat-raised-button color="primary" [disabled]="!isEnabled" (click)="incrementCounter()">Increment</button>
+<i class="material-icons">face</i>
+<button mat-raised-button class="myButton" (click)="incrementCounter()" [@hoverAnimation]>Increment</button>
 <mat-slide-toggle [(ngModel)]="isEnabled">Toggle</mat-slide-toggle>
