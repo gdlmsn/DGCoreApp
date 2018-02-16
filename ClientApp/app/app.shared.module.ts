@@ -1,9 +1,17 @@
+import { MakeService } from './services/make.service';
+   
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { MatButtonModule, MatSlideToggleModule} from '@angular/material';
+
+
+import { MatButtonModule, MatSlideToggleModule } from '@angular/material';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 import { AppComponent } from './components/app/app.component';
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
@@ -11,6 +19,8 @@ import { HomeComponent } from './components/home/home.component';
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
 import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.component';  
+
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -24,9 +34,13 @@ import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.com
         CommonModule,
         HttpClientModule,
         FormsModule,
-
+        MatInputModule,
+        MatSelectModule,
+        MatAutocompleteModule,
         MatButtonModule,
         MatSlideToggleModule,
+        MatFormFieldModule,
+
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'vehicles/new', component: VehicleFormComponent },
@@ -36,6 +50,9 @@ import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.com
             { path: '**', redirectTo: 'home' }
            
         ])
+    ],
+    providers: [
+        MakeService,
     ]
 })
 export class AppModuleShared {
