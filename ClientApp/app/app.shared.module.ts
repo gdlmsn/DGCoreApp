@@ -34,6 +34,7 @@ import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.com
     imports: [
         CommonModule,
         HttpClientModule,
+        HttpModule,
         FormsModule,
         MatInputModule,
         MatSelectModule,
