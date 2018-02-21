@@ -1,15 +1,21 @@
 <div class="example-container">
-    <mat-form-field>
-        <mat-select placeholder="Make" id="make" (change)="onMakeChange()" [(ngModel)]="vehicle.make" name="make">
-            <mat-option value="option"></mat-option>
-            <mat-option *ngFor ="let m of makes" value="{{m.id}}">{{m.name}}</mat-option>
-        </mat-select>
-    </mat-form-field>
-    <br />
-    <mat-form-field>
-        <mat-select placeholder="Model" id="Model">
-            <mat-option value="option"></mat-option>
-            <mat-option *ngFor ="let m of models" value="{{m.id}}">{{m.name}}</mat-option>
-        </mat-select>
-    </mat-form-field>
+    <form>
+        <mat-form-field>
+            <mat-select placeholder="Make" id="make" (change)="onMakeChange()" [(ngModel)]="vehicle.make" name="make">
+                <mat-option value="option"></mat-option>
+                <mat-option *ngFor="let m of makes" value="{{m.id}}">{{m.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-select placeholder="Model" id="Model">
+                <mat-option value="option"></mat-option>
+                <mat-option *ngFor="let m of models" value="{{m.id}}">{{m.name}}</mat-option>
+            </mat-select>
+            <br />
+        </mat-form-field>
+
+        <h2>Features</h2>
+        <!--<mat-checkbox *ngFor="let f of features">Disabled</mat-checkbox>-->
+    </form>
 </div>

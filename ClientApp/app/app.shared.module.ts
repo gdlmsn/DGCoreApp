@@ -11,6 +11,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+
 
 import { AppComponent } from './components/app/app.component';
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
@@ -20,6 +22,7 @@ import { CounterComponent } from './components/counter/counter.component';
 import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.component';  
 
 import { MakeService } from './services/make.service';
+import { FeatureService } from './services/feature.service';
 
 @NgModule({
     declarations: [
@@ -41,6 +44,7 @@ import { MakeService } from './services/make.service';
         MatButtonModule,
         MatSlideToggleModule,
         MatFormFieldModule,
+        MatCheckboxModule,
 
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -54,6 +58,7 @@ import { MakeService } from './services/make.service';
     ],
     providers: [
         MakeService,
+        FeatureService
     ]
 })
 export class AppModuleShared {
