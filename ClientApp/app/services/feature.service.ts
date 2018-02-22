@@ -9,6 +9,6 @@ export class FeatureService {
 
     getFeatures() {
         return this.http.get('/api/features')
-            .map(res => res.json);
+            .map(res => res.json());
     }
 }

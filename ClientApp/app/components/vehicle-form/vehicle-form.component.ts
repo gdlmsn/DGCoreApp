@@ -10,7 +10,7 @@ import { FeatureService } from '../../services/feature.service';
 export class VehicleFormComponent implements OnInit {
     makes: any[];
     models: any[];
-    features: any = {};
+    features: any[];
     vehicle: any = {};
     constructor(
         private MakeService: MakeService,
