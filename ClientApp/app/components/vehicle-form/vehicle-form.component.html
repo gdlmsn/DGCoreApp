@@ -1,5 +1,5 @@
-<div class="example-container">
-    <form>
+<div>
+    <!--<form>-->
         <mat-form-field>
             <mat-select placeholder="Make" id="make" (change)="onMakeChange()" [(ngModel)]="vehicle.make" name="make">
                 <mat-option value="option"></mat-option>
@@ -15,10 +15,6 @@
             <br />
         </mat-form-field>
 
-        <h2>Features</h2>
-            <mat-checkbox *ngFor="let f of features">
-          
-            </mat-checkbox>
-
-    </form>
+     
+    <!--</form>-->
 </div>
