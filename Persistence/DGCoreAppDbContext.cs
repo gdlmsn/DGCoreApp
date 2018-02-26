@@ -9,12 +9,18 @@ namespace DGCoreApp.Persistence
 {
     public class DGCoreAppDbContext : DbContext
     {
+        public DbSet<Make> Makes { get; set; }
+        public DbSet<Feature> Features { get; set; }
+
         public DGCoreAppDbContext(DbContextOptions<DGCoreAppDbContext> options)
             : base(options)
         {
-
         }
-        public DbSet<Make> Makes { get; set; }
-        public DbSet<Feature> Features { get; internal set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<VehicleFeature>().HasKey(vf => new { vf.VehicleId, vf.FeatureId });
+        }
+        
     }
 }

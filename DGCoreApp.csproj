@@ -28,10 +28,8 @@
   <ItemGroup>
     <Compile Remove="Migrations\20180214003118_InitialModel.cs" />
     <Compile Remove="Migrations\20180214003118_InitialModel.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Migrations\" />
+    <Compile Remove="Migrations\20180226234335_AddVehicle.cs" />
+    <Compile Remove="Migrations\20180226234335_AddVehicle.Designer.cs" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">

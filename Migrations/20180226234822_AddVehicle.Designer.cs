@@ -11,9 +11,10 @@ using System;
 namespace DGCoreApp.Migrations
 {
     [DbContext(typeof(DGCoreAppDbContext))]
-    partial class DGCoreAppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180226234822_AddVehicle")]
+    partial class AddVehicle
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
