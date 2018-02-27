@@ -3,6 +3,7 @@ using DGCoreApp.Controllers.Resources;
 using DGCoreApp.Models;
 using DGCoreApp.Persistence;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +27,7 @@ namespace DGCoreApp.Controllers
         public async Task <IActionResult> CreateVehicle([FromBody] VehicleResource vehicleResource)
         {
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
           
@@ -40,7 +41,25 @@ namespace DGCoreApp.Controllers
             return Ok(result);
         }
 
-      
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateVehicle(int id,[FromBody] VehicleResource vehicleResource)
+        {
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+
+
+            var vehicle = await context.Vehicles.Include(v => v.Features).SingleOrDefaultAsync(v => v.Id == id);
+            Mapper.Map<VehicleResource,Vehicle>(vehicleResource, vehicle);
+            vehicle.LastUpdate = DateTime.Now;
+            await context.SaveChangesAsync();
+
+            var result = mapper.Map<Vehicle, VehicleResource>(vehicle);
+            return Ok(result);
+        }
+
+
 
     }
 }
