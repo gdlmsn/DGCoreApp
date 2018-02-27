@@ -10,6 +10,7 @@ namespace DGCoreApp.Persistence
     public class DGCoreAppDbContext : DbContext
     {
         public DbSet<Make> Makes { get; set; }
+        public DbSet<Model> Models { get; set; }
         public DbSet<Feature> Features { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
         public DGCoreAppDbContext(DbContextOptions<DGCoreAppDbContext> options)
