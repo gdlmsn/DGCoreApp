@@ -51,7 +51,11 @@ namespace DGCoreApp.Controllers
 
 
             var vehicle = await context.Vehicles.Include(v => v.Features).SingleOrDefaultAsync(v => v.Id == id);
-            Mapper.Map<VehicleResource,Vehicle>(vehicleResource, vehicle);
+
+            if (vehicle == null)
+                return NotFound();
+
+            mapper.Map<VehicleResource,Vehicle>(vehicleResource, vehicle);
             vehicle.LastUpdate = DateTime.Now;
             await context.SaveChangesAsync();
 
@@ -59,7 +63,20 @@ namespace DGCoreApp.Controllers
             return Ok(result);
         }
 
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteVehicle(int id)
+        {
+            var vehicle = await context.Vehicles.FindAsync(id);
+            if (vehicle == null)
+                return NotFound();
 
+
+            context.Remove(vehicle);
+            await context.SaveChangesAsync();
+
+            return Ok(id);
+
+        }
 
     }
 }
