@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 namespace DGCoreApp.Persistence
 {
 
-    public class UnitOfWork : IUnitOfWork
-    { 
-}
-    public class IUnitOfWork
+
+
+    public interface IUnitOfWork
     {
-        Task Complete();
+        Task CompleteAsync();
     }
 }

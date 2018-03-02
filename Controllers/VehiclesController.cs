@@ -14,15 +14,15 @@ namespace DGCoreApp.Controllers
     [Route("/api/vehicles")]
     public class VehiclesController : Controller
     {
-        private readonly IMapper mapper;
-        private readonly DGCoreAppDbContext context;
+        private readonly IMapper mapper;`
         private readonly IVehicleRepository repository;
+        private readonly IUnitOfWork unitOfWork;
 
-        public VehiclesController(IMapper mapper, DGCoreAppDbContext context, IVehicleRepository repository)
+        public VehiclesController(IMapper mapper, IVehicleRepository repository, IUnitOfWork unitOfWork)
         {
             this.mapper = mapper;
-            this.context = context;
             this.repository = repository;
+            this.unitOfWork = unitOfWork;
         }
 
         [HttpPost]
@@ -36,7 +36,7 @@ namespace DGCoreApp.Controllers
             vehicle.LastUpdate = DateTime.Now;
 
             repository.Add(vehicle);
-            await context.SaveChangesAsync();
+            await unitOfWork.CompleteAsync();
 
             vehicle = await repository.GetVehicle(vehicle.Id); 
 
@@ -62,7 +62,7 @@ namespace DGCoreApp.Controllers
 
             mapper.Map<SaveVehicleResource,Vehicle>(vehicleResource, vehicle);
             vehicle.LastUpdate = DateTime.Now;
-            await context.SaveChangesAsync();
+            await unitOfWork.CompleteAsync();
 
             var result = mapper.Map<Vehicle, VehicleResource>(vehicle);
             return Ok(result);
@@ -77,7 +77,7 @@ namespace DGCoreApp.Controllers
 
 
             repository.Remove(vehicle);
-            await context.SaveChangesAsync();
+            await unitOfWork.CompleteAsync();
 
             return Ok(id);
 
