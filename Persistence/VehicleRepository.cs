@@ -18,7 +18,7 @@ namespace DGCoreApp.Persistence
 
         public async Task<Vehicle> GetVehicle(int id, bool includeRelated = true)
         {
-            if (includeRelated != false)
+            if (!includeRelated)
                 return await context.Vehicles.FindAsync(id);
 
            return await context.Vehicles

@@ -14,7 +14,7 @@ namespace DGCoreApp.Controllers
     [Route("/api/vehicles")]
     public class VehiclesController : Controller
     {
-        private readonly IMapper mapper;`
+        private readonly IMapper mapper;
         private readonly IVehicleRepository repository;
         private readonly IUnitOfWork unitOfWork;
 
@@ -63,6 +63,7 @@ namespace DGCoreApp.Controllers
             mapper.Map<SaveVehicleResource,Vehicle>(vehicleResource, vehicle);
             vehicle.LastUpdate = DateTime.Now;
             await unitOfWork.CompleteAsync();
+            vehicle = await repository.GetVehicle(vehicle.Id);
 
             var result = mapper.Map<Vehicle, VehicleResource>(vehicle);
             return Ok(result);
