@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DGCoreApp.Controllers.Resources;
+using DGCoreApp.Core;
 using DGCoreApp.Models;
 using DGCoreApp.Persistence;
 using Microsoft.AspNetCore.Mvc;

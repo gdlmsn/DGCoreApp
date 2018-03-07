@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using DGCoreApp.Models;
 
-namespace DGCoreApp.Persistence
+namespace DGCoreApp.Core
 {
     public interface IVehicleRepository
     {

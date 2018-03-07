@@ -1,4 +1,5 @@
-﻿using DGCoreApp.Models;
+﻿using DGCoreApp.Core;
+using DGCoreApp.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
