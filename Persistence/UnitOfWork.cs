@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using DGCoreApp.Core;
+using System.Threading.Tasks;
 
 namespace DGCoreApp.Persistence
 {
