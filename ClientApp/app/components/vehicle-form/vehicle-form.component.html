@@ -1,20 +1,32 @@
 <div>
     <!--<form>-->
-        <mat-form-field>
-            <mat-select placeholder="Make" id="make" (change)="onMakeChange()" [(ngModel)]="vehicle.make" name="make">
-                <mat-option value="option"></mat-option>
-                <mat-option *ngFor="let m of makes" value="{{m.id}}">{{m.name}}</mat-option>
-            </mat-select>
-        </mat-form-field>
+    <mat-form-field>
+        <mat-select placeholder="Make" id="make" (change)="onMakeChange()" [(ngModel)]="vehicle.make" name="make">
+            <mat-option value="option"></mat-option>
+            <mat-option *ngFor="let m of makes" value="{{m.id}}">{{m.name}}</mat-option>
+        </mat-select>
+    </mat-form-field>
 
-        <mat-form-field>
-            <mat-select placeholder="Model" id="Model">
-                <mat-option value="option"></mat-option>
-                <mat-option *ngFor="let m of models" value="{{m.id}}">{{m.name}}</mat-option>
-            </mat-select>
-            <br />
-        </mat-form-field>
+    <mat-form-field>
+        <mat-select placeholder="Model" id="Model">
+            <mat-option value="option"></mat-option>
+            <mat-option *ngFor="let m of models" value="{{m.id}}">{{m.name}}</mat-option>
+        </mat-select>
+        <br />
+    </mat-form-field>
+    <h2>Features</h2>
+    <section *ngFor="let f of features">
+        <mat-checkbox class="example-margin" id="feature{{f.id}}">feature{{f.name}}</mat-checkbox>
 
-     
+    </section>
+
+
+    <!--<div *ngFor="let f of features" class="checkbox">
+        <label for="feature{{ f.id }}">
+            <input type="checkbox" id="feature{{ f.id }}"> {{ f.name }}
+        </label>
+    </div>-->
+
+
     <!--</form>-->
 </div>
