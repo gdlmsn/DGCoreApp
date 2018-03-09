@@ -4,14 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
+import { AppMaterialModule } from './app-material/app-material.module';
 
-
-import { MatButtonModule, MatSlideToggleModule } from '@angular/material';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 import { AppComponent } from './components/app/app.component';
@@ -34,18 +28,11 @@ import { VehicleService } from './services/vehicle.service';
         VehicleFormComponent
     ],
     imports: [
+        AppMaterialModule,
         CommonModule,
         HttpClientModule,
         HttpModule,
         FormsModule,
-        MatInputModule,
-        MatSelectModule,
-        MatAutocompleteModule,
-        MatButtonModule,
-        MatSlideToggleModule,
-        MatFormFieldModule,
-        MatCheckboxModule,
-
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'vehicles/new', component: VehicleFormComponent },
