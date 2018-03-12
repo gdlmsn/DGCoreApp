@@ -7,6 +7,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -18,7 +22,11 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
         MatButtonModule,
         MatSlideToggleModule,
         MatFormFieldModule,
-        MatCheckboxModule
+        MatCheckboxModule,
+        MatToolbarModule,
+        MatSidenavModule,
+        MatTabsModule,
+        MatIconModule
     ],
     exports: [CommonModule,
         MatInputModule,
@@ -27,7 +35,12 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
         MatButtonModule,
         MatSlideToggleModule,
         MatFormFieldModule,
-        MatCheckboxModule],
+        MatCheckboxModule,
+        MatToolbarModule,
+        MatSidenavModule,
+        MatTabsModule,
+        MatIconModule
+    ],
   declarations: []
 })
 export class AppMaterialModule { }

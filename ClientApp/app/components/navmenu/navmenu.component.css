@@ -1,3 +1,22 @@
+
+mat-toolbar-row {
+    justify-content:space-between;
+}
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+mat-drawer-container {
+    height: 100vh;
+}
+
+mat-drawer{
+    width:320px;
+}
+[mat-raised-button] {
+    width:100%;
+}
+
 li .glyphicon {
     margin-right: 10px;
 }
