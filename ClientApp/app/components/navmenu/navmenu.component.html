@@ -11,21 +11,27 @@
     </button>
 </mat-toolbar>
 <mat-drawer-container class="example-container">
-    <mat-drawer align="end" mode="side" opened="true">
+    <mat-drawer align="end" mode="side" opened="true" #sidenav>
         <mat-tab-group>
-            <mat-tab label="Tab 1">Details</mat-tab>
-            <mat-tab label="Tab 2">Feed</mat-tab>
+            <mat-tab label="Details">
+                <button mat-raised-button (click)="sidenav.close()" color="accent">CLOSE</button>
+            </mat-tab>
+
+            <mat-tab label="Feed">Feed</mat-tab>
         </mat-tab-group>
 
     </mat-drawer>
-    <mat-drawer-content>Main content</mat-drawer-content>
+    <mat-drawer-content>
+
+        <mat-grid-list cols="2" rowHeight="2:1">
+            <mat-grid-tile>1</mat-grid-tile>
+            <mat-grid-tile>2</mat-grid-tile>
+            <mat-grid-tile>3</mat-grid-tile>
+            <mat-grid-tile>4</mat-grid-tile>
+        </mat-grid-list>
+    </mat-drawer-content>
 </mat-drawer-container>
-<mat-grid-list cols="2" rowHeight="2:1">
-    <mat-grid-tile>1</mat-grid-tile>
-    <mat-grid-tile>2</mat-grid-tile>
-    <mat-grid-tile>3</mat-grid-tile>
-    <mat-grid-tile>4</mat-grid-tile>
-</mat-grid-list>
+
 
 <!--<div class='main-nav'>
     <div class='navbar navbar-inverse'>

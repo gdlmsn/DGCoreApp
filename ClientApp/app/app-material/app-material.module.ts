@@ -11,6 +11,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { MatIconModule } from '@angular/material/icon';
         MatToolbarModule,
         MatSidenavModule,
         MatTabsModule,
-        MatIconModule
+      MatIconModule,
+      MatGridListModule
     ],
     exports: [CommonModule,
         MatInputModule,
@@ -39,7 +41,8 @@ import { MatIconModule } from '@angular/material/icon';
         MatToolbarModule,
         MatSidenavModule,
         MatTabsModule,
-        MatIconModule
+        MatIconModule,
+        MatGridListModule
     ],
   declarations: []
 })
