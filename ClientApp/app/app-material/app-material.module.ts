@@ -12,6 +12,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatMenuModule } from '@angular/material/menu';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
         MatSidenavModule,
         MatTabsModule,
       MatIconModule,
-      MatGridListModule
+      MatGridListModule,
+      MatMenuModule
     ],
     exports: [CommonModule,
         MatInputModule,
@@ -42,7 +44,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
         MatSidenavModule,
         MatTabsModule,
         MatIconModule,
-        MatGridListModule
+        MatGridListModule,
+        MatMenuModule
     ],
   declarations: []
 })

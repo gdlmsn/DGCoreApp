@@ -4,12 +4,19 @@
         DgCoreApp
     </span>
     <span class="example-spacer"></span>
-    <button mat-icon-button>
+    <button mat-icon-button [mat-menu-trigger-for]="menu">
         <mat-icon>
             more_vert
         </mat-icon>
     </button>
 </mat-toolbar>
+<mat-menu x-position="before" #menu="matMenu">
+    <button mat-menu-item>Settings</button>
+    <button mat-menu-item>Toggle theme</button>
+
+    <button mat-menu-item>Help</button>
+
+</mat-menu>
 <mat-drawer-container class="example-container">
     <mat-drawer align="end" mode="side" opened="true" #sidenav>
         <mat-tab-group>
