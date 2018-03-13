@@ -1,10 +1,20 @@
-<div class='container-fluid'>
-    <div class='row'>
-        <div class='col-sm-3'>
-            <nav-menu></nav-menu>
-        </div>
-        <div class='col-sm-9 body-content'>
-            <router-outlet></router-outlet>
-        </div>
-    </div>
-</div>
+<nav-menu></nav-menu>
+<mat-drawer-container class="example-container">
+
+    <mat-drawer align="end" mode="side" opened="true" #sidenav>
+        <mat-tab-group>
+            <mat-tab label="Details">
+                <button mat-raised-button (click)="sidenav.close()" color="accent">CLOSE</button>
+            </mat-tab>
+
+            <mat-tab label="Feed">Feed</mat-tab>
+        </mat-tab-group>
+
+    </mat-drawer>
+    <mat-drawer-content>
+
+        <router-outlet></router-outlet>
+
+    </mat-drawer-content>
+</mat-drawer-container>
+
