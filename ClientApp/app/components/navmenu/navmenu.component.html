@@ -11,16 +11,10 @@
     </button>
 </mat-toolbar>
 <mat-menu x-position="before" #menu="matMenu">
-    <button mat-menu-item>
-        <li [routerLinkActive]="['link-active']">
-            <a [routerLink]="['/home']">
-                <span class='glyphicon glyphicon-home'></span> Home
-            </a>
-        </li>
-    </button>
-    <button mat-menu-item>Toggle theme</button>
-
-    <button mat-menu-item>Help</button>
+    <button mat-menu-item [routerLink]="['/home']">Home</button>
+    <button mat-menu-item [routerLink]="['/vehicles/new']">New Vehicle</button>
+    <button mat-menu-item [routerLink]="['/counter']">Counter</button>
+    <button mat-menu-item [routerLink]="['/fetch-data']">Fetch Data</button>
 
 </mat-menu>
 
