@@ -9,3 +9,5 @@ import '../style/dgcoreapp-theme.scss';
 })
 export class AppComponent {
 }
+
+//isDarkTheme = false;

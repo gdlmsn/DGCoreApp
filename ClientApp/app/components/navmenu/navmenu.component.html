@@ -1,19 +1,21 @@
-<mat-toolbar color="primary">
-    <span>
-        <mat-icon>home</mat-icon>
-        DgCoreApp
-    </span>
-    <span class="example-spacer"></span>
-    <button mat-icon-button [mat-menu-trigger-for]="menu">
-        <mat-icon>
-            more_vert
-        </mat-icon>
-    </button>
-</mat-toolbar>
-<mat-menu x-position="before" #menu="matMenu">
-    <button mat-menu-item [routerLink]="['/home']">Home</button>
-    <button mat-menu-item [routerLink]="['/vehicles/new']">New Vehicle</button>
-    <button mat-menu-item [routerLink]="['/counter']">Counter</button>
-    <button mat-menu-item [routerLink]="['/fetch-data']">Fetch Data</button>
 
-</mat-menu>
+    <mat-toolbar color="primary">
+        <span>
+            <mat-icon>home</mat-icon>
+            DgCoreApp
+        </span>
+        <span class="example-spacer"></span>
+        <button mat-icon-button [mat-menu-trigger-for]="menu">
+            <mat-icon>
+                more_vert
+            </mat-icon>
+        </button>
+    </mat-toolbar>
+    <mat-menu x-position="before" #menu="matMenu">
+        <button mat-menu-item [routerLink]="['/home']">Home</button>
+        <button mat-menu-item [routerLink]="['/vehicles/new']">New Vehicle</button>
+        <button mat-menu-item [routerLink]="['/counter']">Counter</button>
+        <button mat-menu-item [routerLink]="['/fetch-data']">Fetch Data</button>
+        <!--<button mat-menu-item (click)="isDarkTheme!=isDarkTheme">Toggle Theme</button>-->
+
+    </mat-menu>
