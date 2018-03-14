@@ -32,8 +32,8 @@ namespace DGCoreApp.Mapping
             CreateMap<SaveVehicleResource, Vehicle>()
                 .ForMember(v => v.Id, opt => opt.Ignore())
                 .ForMember(v => v.ContactName, opt => opt.MapFrom(vr => vr.Contact.Name))
-                .ForMember(v => v.ContactEmail, opt => opt.MapFrom(vr => vr.Contact.Name))
-                .ForMember(v => v.ContactPhone, opt => opt.MapFrom(vr => vr.Contact.Name))
+                .ForMember(v => v.ContactEmail, opt => opt.MapFrom(vr => vr.Contact.Email))
+                .ForMember(v => v.ContactPhone, opt => opt.MapFrom(vr => vr.Contact.Phone))
                 .ForMember(v => v.Features, opt => opt.Ignore())
                 .AfterMap((vr, v) =>
                 {
