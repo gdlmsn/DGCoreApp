@@ -36,9 +36,9 @@ export class VehicleFormComponent implements OnInit {
             this.vehicle.features.push(featureId);
         else {
             var index = this.vehicle.features.indexOf(featureId);
-
-            this.vehicle.features.splaice(index, 1);
+            this.vehicle.features.splice(index, 1);
         }
     }
+    
 
 }
