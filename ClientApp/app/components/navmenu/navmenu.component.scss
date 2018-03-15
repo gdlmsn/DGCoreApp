@@ -12,8 +12,13 @@ mat-drawer-container {
 }
 
 mat-drawer{
+
     width:320px;
 }
+mat-drawer-content{
+    margin:15px;
+}
+
 [mat-raised-button] {
     width:100%;
 }

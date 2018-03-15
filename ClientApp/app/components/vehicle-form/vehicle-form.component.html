@@ -1,14 +1,14 @@
 <div>
-    <!--<form>-->
+    <p>{{vehicle | json }}</p>
     <mat-form-field>
-        <mat-select placeholder="Make" id="make" (change)="onMakeChange()" [(ngModel)]="vehicle.make" name="make">
+        <mat-select placeholder="Make" id="make" (change)="onMakeChange()" [(ngModel)]="vehicle.makeId" name="makeId">
             <mat-option value="option"></mat-option>
             <mat-option *ngFor="let m of makes" value="{{m.id}}">{{m.name}}</mat-option>
         </mat-select>
     </mat-form-field>
 
     <mat-form-field>
-        <mat-select placeholder="Model" id="Model">
+        <mat-select placeholder="Model" id="model" [(ngModel)]="vehicle.modelId" name="modelId" >
             <mat-option value="option"></mat-option>
             <mat-option *ngFor="let m of models" value="{{m.id}}">{{m.name}}</mat-option>
         </mat-select>
@@ -16,7 +16,7 @@
     </mat-form-field>
     <h2>Features</h2>
     <section *ngFor="let f of features">
-        <mat-checkbox class="example-margin" id="feature{{f.id}}">feature{{f.name}}</mat-checkbox>
+        <mat-checkbox class="example-margin" id="feature{{f.id}}" (change)="onFeatureToggle(f.id, $event)">feature{{f.name}}</mat-checkbox>
 
     </section>
 
