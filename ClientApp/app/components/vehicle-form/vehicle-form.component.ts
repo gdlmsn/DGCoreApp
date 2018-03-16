@@ -14,6 +14,7 @@ export class VehicleFormComponent implements OnInit {
     vehicle: any = {
         features: []
     };
+
     constructor(
         private vehicleService: VehicleService) { }
 
