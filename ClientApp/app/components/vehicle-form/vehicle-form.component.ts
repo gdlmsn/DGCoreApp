@@ -1,6 +1,7 @@
 import { VehicleService } from '../../services/vehicle.service';
 import { Component, OnInit } from '@angular/core';
 
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-vehicle-form',
@@ -12,7 +13,8 @@ export class VehicleFormComponent implements OnInit {
     models: any[];
     features: any[];
     vehicle: any = {
-        features: []
+        features: [],
+        contact: {}
     };
 
     constructor(
@@ -40,6 +42,11 @@ export class VehicleFormComponent implements OnInit {
             this.vehicle.features.splice(index, 1);
         }
     }
-    
+
+
+    submit() {
+        this.vehicleService.create(this.vehicle)
+            .subscribe(x => console.log(x));
+    }
 
 }

@@ -1,42 +1,53 @@
-<div>
+<mat-card>
+    <mat-card-title>
+        Registration Form
+    </mat-card-title>
+    <form (ngSubmit)="submit()">
+
+        <mat-form-field>
+            <mat-select placeholder="Make" id="make" (change)="onMakeChange()" [(ngModel)]="vehicle.makeId" name="makeId">
+                <mat-option value="option"></mat-option>
+                <mat-option *ngFor="let m of makes" value="{{m.id}}">{{m.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-select placeholder="Model" id="model" [(ngModel)]="vehicle.modelId" name="modelId">
+                <mat-option value="option"></mat-option>
+                <mat-option *ngFor="let m of models" value="{{m.id}}">{{m.name}}</mat-option>
+            </mat-select>
+            <br />
+        </mat-form-field>
+        <!--<h2>Features</h2>
+
+    <section *ngFor="let f of features">
+        <mat-checkbox class="example-margin" id="feature{{f.id}}" (change)="onFeatureToggle(f.id, event)">{{f.name}}</mat-checkbox>
+
+    </section>-->
+
+        <div *ngFor="let f of features" class="checkbox">
+            <label for="feature{{ f.id }}">
+                <input type="checkbox" id="feature{{ f.id }}" (change)="onFeatureToggle(f.id, $event)" [checked]="vehicle.features.includes(f.id)"> {{ f.name }}
+            </label>
+        </div>
+
+        <mat-form-field>
+            <input matInput placeholder="Name" [(ngModel)]="vehicle.contact.name" name="contactName" [errorStateMatcher]="matcher" >
+            <mat-hint>Max 20 character</mat-hint>
+            <!--<mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+            Please enter a valid email address
+            </mat-error>-->
+        </mat-form-field>
+       
+        <mat-form-field>
+            <input matInput placeholder="Phone" [(ngModel)]="vehicle.contact.phone" name="contactPhone" required>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Email" [formControl]="emailFormControl" [errorStateMatcher]="matcher" [(ngModel)]="vehicle.contact.email" name="contactEmail" required>
+        </mat-form-field>
+        <button mat-button>SUBMIT</button>
+    </form>
+</mat-card>
+<mat-card>
     <p>{{vehicle | json }}</p>
-    <mat-form-field>
-        <mat-select placeholder="Make" id="make" (change)="onMakeChange()" [(ngModel)]="vehicle.makeId" name="makeId">
-            <mat-option value="option"></mat-option>
-            <mat-option *ngFor="let m of makes" value="{{m.id}}">{{m.name}}</mat-option>
-        </mat-select>
-    </mat-form-field>
-
-    <mat-form-field>
-        <mat-select placeholder="Model" id="model" [(ngModel)]="vehicle.modelId" name="modelId">
-            <mat-option value="option"></mat-option>
-            <mat-option *ngFor="let m of models" value="{{m.id}}">{{m.name}}</mat-option>
-        </mat-select>
-        <br />
-    </mat-form-field>
-    <!--<h2>Features</h2>
-
-        <section *ngFor="let f of features">
-            <mat-checkbox class="example-margin" id="feature{{f.id}}" (change)="onFeatureToggle(f.id, event)">{{f.name}}</mat-checkbox>
-
-        </section>-->
-
-    <div *ngFor="let f of features" class="checkbox">
-        <label for="feature{{ f.id }}">
-            <input type="checkbox" id="feature{{ f.id }}" (change)="onFeatureToggle(f.id, $event)" [checked]="vehicle.features.includes(f.id)"> {{ f.name }}
-        </label>
-    </div>
-
-    <mat-form-field>
-        <input matInput placeholder="Name" [(ngModel)]="vehicle.contact.name" name="contactName">
-    </mat-form-field>
-    <mat-form-field>
-        <input matInput placeholder="Phone" [(ngModel)]="vehicle.contact.phone" name="contactPhone">
-    </mat-form-field>   
-    <mat-form-field>
-        <input matInput placeholder="Email" [(ngModel)]="vehicle.contact.email" name="contactEmail">
-    </mat-form-field>
-
-
-
-</div>
+</mat-card>

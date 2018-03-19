@@ -16,6 +16,8 @@ import { CounterComponent } from './components/counter/counter.component';
 import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.component';  
 
 import { VehicleService } from './services/vehicle.service';
+import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
+import { FormControl, Validators } from '@angular/forms';
 
 
 @NgModule({
@@ -44,7 +46,8 @@ import { VehicleService } from './services/vehicle.service';
         ])
     ],
     providers: [
-        VehicleService
+        VehicleService,
+        { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}
     ]
 })
 export class AppModuleShared {
