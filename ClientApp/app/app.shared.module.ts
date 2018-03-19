@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
@@ -16,8 +16,9 @@ import { CounterComponent } from './components/counter/counter.component';
 import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.component';  
 
 import { VehicleService } from './services/vehicle.service';
-import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
-import { FormControl, Validators } from '@angular/forms';
+import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material';
+
+
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { FormControl, Validators } from '@angular/forms';
         HttpClientModule,
         HttpModule,
         FormsModule,
+        ReactiveFormsModule,
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'vehicles/new', component: VehicleFormComponent },
@@ -47,7 +49,7 @@ import { FormControl, Validators } from '@angular/forms';
     ],
     providers: [
         VehicleService,
-        { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}
+        { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher }
     ]
 })
 export class AppModuleShared {

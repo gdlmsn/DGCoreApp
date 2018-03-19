@@ -1,7 +1,7 @@
 import { VehicleService } from '../../services/vehicle.service';
 import { Component, OnInit } from '@angular/core';
-
-import { FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators, FormsModule } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
 
 @Component({
   selector: 'app-vehicle-form',
@@ -17,8 +17,26 @@ export class VehicleFormComponent implements OnInit {
         contact: {}
     };
 
+    vForm: FormGroup;
+    makeId: string = '';
+    modelId: string = '';
+    featureId: string = '';
+    contactName: string = '';
+    contactPhone: number;
+    contactEmail: string = '';
+
     constructor(
-        private vehicleService: VehicleService) { }
+        private vehicleService: VehicleService, private fb: FormBuilder) {
+        this.vForm = fb.group({
+            'makeId': [null, Validators.required],
+            'modelId': [null, Validators.required],
+            'featureId': [null, Validators.required],
+            'contactName': [null, Validators.required],
+            'contactPhone': [null, Validators.required],
+            'contactEmail': [null, Validators.compose([Validators.required, Validators.email])]
+        });
+       
+    }
 
   ngOnInit() {
       this.vehicleService.getMakes().subscribe(makes =>

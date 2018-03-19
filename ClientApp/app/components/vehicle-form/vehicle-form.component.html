@@ -1,27 +1,41 @@
+
+
+
+
+
+
+
+
+
 <mat-card>
     <mat-card-title>
         Registration Form
     </mat-card-title>
-    <form (ngSubmit)="submit()">
+    <form [formGroup]="vForm" (ngSubmit)="submit(vForm.value)">
 
         <mat-form-field>
-            <mat-select placeholder="Make" id="make" (change)="onMakeChange()" [(ngModel)]="vehicle.makeId" name="makeId">
+            <mat-select placeholder="Make" id="make" (change)="onMakeChange()" [(ngModel)]="vehicle.makeId" formControlName="makeId">
                 <mat-option value="option"></mat-option>
                 <mat-option *ngFor="let m of makes" value="{{m.id}}">{{m.name}}</mat-option>
             </mat-select>
+            <mat-error>
+                <span *ngIf="!vForm.get('makeId').valid && vForm.get('makeId').touched"> Please select a Make</span>
+            </mat-error>
         </mat-form-field>
 
         <mat-form-field>
-            <mat-select placeholder="Model" id="model" [(ngModel)]="vehicle.modelId" name="modelId">
+            <mat-select placeholder="Model" id="model" [(ngModel)]="vehicle.modelId" formControlName="modelId">
                 <mat-option value="option"></mat-option>
                 <mat-option *ngFor="let m of models" value="{{m.id}}">{{m.name}}</mat-option>
             </mat-select>
-            <br />
+            <mat-error>
+                <span *ngIf="!vForm.get('makeId').valid && vForm.get('makeId').touched"> Please select a Model</span>
+            </mat-error>
         </mat-form-field>
         <!--<h2>Features</h2>
 
     <section *ngFor="let f of features">
-        <mat-checkbox class="example-margin" id="feature{{f.id}}" (change)="onFeatureToggle(f.id, event)">{{f.name}}</mat-checkbox>
+        <mat-checkbox  id="feature{{f.id}}" formControlName="feature" (change)="onFeatureToggle(f.id, event)">{{f.name}}</mat-checkbox>
 
     </section>-->
 
@@ -32,18 +46,28 @@
         </div>
 
         <mat-form-field>
-            <input matInput placeholder="Name" [(ngModel)]="vehicle.contact.name" name="contactName" [errorStateMatcher]="matcher" >
+            <input matInput [errorStateMatcher]="matcher" formControlName="contactName" placeholder="Name" [(ngModel)]="vehicle.contact.name">
             <mat-hint>Max 20 character</mat-hint>
-            <!--<mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-            Please enter a valid email address
-            </mat-error>-->
+            <mat-error>
+                <span *ngIf="!vForm.get('contactName').valid && vForm.get('contactName').touched"> Please enter First Name</span>
+           
+            </mat-error>
         </mat-form-field>
        
         <mat-form-field>
-            <input matInput placeholder="Phone" [(ngModel)]="vehicle.contact.phone" name="contactPhone" required>
+            <input matInput formControlName="contactPhone" placeholder="Phone" [(ngModel)]="vehicle.contact.phone">
+            <mat-hint>Max 10 numbers</mat-hint>
+            <mat-error>
+                <span *ngIf="!vForm.get('contactPhone').valid && vForm.get('contactPhone').touched"> Please enter Phone Number</span>
+            </mat-error>
         </mat-form-field>
         <mat-form-field>
-            <input matInput placeholder="Email" [formControl]="emailFormControl" [errorStateMatcher]="matcher" [(ngModel)]="vehicle.contact.email" name="contactEmail" required>
+            <input matInput formControlName="contactEmail" placeholder="Email" [(ngModel)]="vehicle.contact.email" >
+            <mat-hint>use like: email@test.com</mat-hint>
+            <mat-error>
+                <span *ngIf="!vForm.get('contactEmail').valid && vForm.get('contactEmail').touched"> Please enter valid email</span>
+
+            </mat-error>
         </mat-form-field>
         <button mat-button>SUBMIT</button>
     </form>
