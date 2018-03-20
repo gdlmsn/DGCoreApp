@@ -2,7 +2,7 @@
     <mat-card-title>
         Registration Form
     </mat-card-title>
-    <form #f="ngForm" (ngSubmit)="submit()">
+    <form #f="ngForm" (ngSubmit)="submit()" novalidate>
 
         <mat-form-field>
             <mat-select placeholder="Make" id="make" (change)="onMakeChange()" [(ngModel)]="vehicle.makeId" name="makeId" required #make="ngModel">

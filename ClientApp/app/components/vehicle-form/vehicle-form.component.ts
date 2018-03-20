@@ -19,16 +19,15 @@ export class VehicleFormComponent implements OnInit {
         contact: {}
     };
 
-    vForm: FormGroup;
-    makeId: string = '';
-    modelId: string = '';
-    featureId: string = '';
-    contactName: string = '';
-    contactPhone: number;
-    contactEmail: string = '';
+    //vForm: FormGroup;
+    //makeId: string = '';
+    //modelId: string = '';
+    //featureId: string = '';
+    //contactName: string = '';
+    //contactPhone: number;
+    //contactEmail: string = '';
 
-    constructor(
-        private vehicleService: VehicleService) {
+    constructor(private vehicleService: VehicleService) {
        
     }
 
