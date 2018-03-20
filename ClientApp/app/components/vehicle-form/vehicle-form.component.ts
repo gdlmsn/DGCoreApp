@@ -2,12 +2,14 @@ import { VehicleService } from '../../services/vehicle.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators, FormsModule } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { ErrorStateMatcherCoreModule } from '../../error-state-matcher-core/error-state-matcher-core.module';
 
 @Component({
   selector: 'app-vehicle-form',
   templateUrl: './vehicle-form.component.html',
   styleUrls: ['./vehicle-form.component.css']
 })
+
 export class VehicleFormComponent implements OnInit {
     makes: any[];
     models: any[];
@@ -26,19 +28,12 @@ export class VehicleFormComponent implements OnInit {
     contactEmail: string = '';
 
     constructor(
-        private vehicleService: VehicleService, private fb: FormBuilder) {
-        this.vForm = fb.group({
-            'makeId': [null, Validators.required],
-            'modelId': [null, Validators.required],
-            'featureId': [null, Validators.required],
-            'contactName': [null, Validators.required],
-            'contactPhone': [null, Validators.required],
-            'contactEmail': [null, Validators.compose([Validators.required, Validators.email])]
-        });
+        private vehicleService: VehicleService) {
        
     }
 
-  ngOnInit() {
+    ngOnInit() {
+    
       this.vehicleService.getMakes().subscribe(makes =>
           this.makes = makes);
 
@@ -64,7 +59,10 @@ export class VehicleFormComponent implements OnInit {
 
     submit() {
         this.vehicleService.create(this.vehicle)
-            .subscribe(x => console.log(x));
+            .subscribe(
+            x => console.log(x));
+        
+    
     }
 
 }

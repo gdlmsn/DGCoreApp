@@ -22,7 +22,10 @@
 
   <ItemGroup>
     <!-- Files not to publish (note that the 'dist' subfolders are re-added below) -->
+    <Compile Remove="ClientApp\app\ErrorStateMatcher\**" />
     <Content Remove="ClientApp\**" />
+    <EmbeddedResource Remove="ClientApp\app\ErrorStateMatcher\**" />
+    <None Remove="ClientApp\app\ErrorStateMatcher\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,8 +36,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\app\ErrorStateMatcher\" />
+    <None Remove="ClientApp\app\app.error-handler.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Core\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\app\app.error-handler.ts" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">

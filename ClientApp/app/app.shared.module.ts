@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { AppMaterialModule } from './app-material/app-material.module';
-
+import { ErrorStateMatcherCoreModule } from './error-state-matcher-core/error-state-matcher-core.module';
 
 
 import { AppComponent } from './components/app/app.component';
@@ -17,6 +17,7 @@ import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.com
 
 import { VehicleService } from './services/vehicle.service';
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material';
+import { AppErrorHandler } from './app.error-handler';
 
 
 
@@ -49,7 +50,7 @@ import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/materi
     ],
     providers: [
         VehicleService,
-        { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher }
+        { provide: ErrorHandler, useClass: AppErrorHandler }
     ]
 })
 export class AppModuleShared {
