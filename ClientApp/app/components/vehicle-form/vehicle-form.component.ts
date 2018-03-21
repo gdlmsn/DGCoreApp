@@ -2,7 +2,8 @@ import { VehicleService } from '../../services/vehicle.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators, FormsModule } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
-import { ErrorStateMatcherCoreModule } from '../../error-state-matcher-core/error-state-matcher-core.module';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ToastyService } from 'ng2-toasty';
 
 @Component({
   selector: 'app-vehicle-form',
@@ -27,11 +28,22 @@ export class VehicleFormComponent implements OnInit {
     //contactPhone: number;
     //contactEmail: string = '';
 
-    constructor(private vehicleService: VehicleService) {
-       
+    constructor(
+        private route: ActivatedRoute,
+        private router: Router,
+        private toastyService: ToastyService,
+        private vehicleService: VehicleService) {
+
+        route.params.subscribe(p => {
+            this.vehicle.id = +p['id'];
+        })
     }
 
     ngOnInit() {
+        this.vehicleService.getVehicle(this.vehicle.id)
+            .subscribe(v => {
+                this.vehicle = v;
+            });
     
       this.vehicleService.getMakes().subscribe(makes =>
           this.makes = makes);

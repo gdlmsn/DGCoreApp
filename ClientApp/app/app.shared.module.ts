@@ -6,7 +6,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { AppMaterialModule } from './app-material/app-material.module';
 import { ErrorStateMatcherCoreModule } from './error-state-matcher-core/error-state-matcher-core.module';
-
+import { ToastyModule } from 'ng2-toasty';
 
 import { AppComponent } from './components/app/app.component';
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
@@ -37,10 +37,13 @@ import { AppErrorHandler } from './app.error-handler';
         HttpClientModule,
         HttpModule,
         FormsModule,
+        ToastyModule.forRoot(),
         ReactiveFormsModule,
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'vehicles/new', component: VehicleFormComponent },
+            { path: 'vehicles/:id', component: VehicleFormComponent },
+
             { path: 'home', component: HomeComponent },
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
