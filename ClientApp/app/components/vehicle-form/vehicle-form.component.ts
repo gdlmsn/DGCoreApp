@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, NgForm, Validators, FormsModule } from '@angula
 import { ErrorStateMatcher } from '@angular/material/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastyService } from 'ng2-toasty';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/Observable/forkJoin';
 
 @Component({
   selector: 'app-vehicle-form',
@@ -20,19 +22,12 @@ export class VehicleFormComponent implements OnInit {
         contact: {}
     };
 
-    //vForm: FormGroup;
-    //makeId: string = '';
-    //modelId: string = '';
-    //featureId: string = '';
-    //contactName: string = '';
-    //contactPhone: number;
-    //contactEmail: string = '';
 
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        private toastyService: ToastyService,
-        private vehicleService: VehicleService) {
+        private vehicleService: VehicleService,
+        private toastyService: ToastyService) {
 
         route.params.subscribe(p => {
             this.vehicle.id = +p['id'];
@@ -40,17 +35,27 @@ export class VehicleFormComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.vehicleService.getVehicle(this.vehicle.id)
-            .subscribe(v => {
-                this.vehicle = v;
-            });
-    
-      this.vehicleService.getMakes().subscribe(makes =>
-          this.makes = makes);
 
-     this.vehicleService.getFeatures().subscribe(features =>
-         this.features = features);
-  }
+        var sources = [
+            this.vehicleService.getMakes(),
+            this.vehicleService.getFeatures(),
+        ];
+
+        if (this.vehicle.id)
+            sources.push(this.vehicleService.getVehicle(this.vehicle.id))
+
+        Observable.forkJoin(sources).subscribe(data => {
+            this.makes = data[0];
+            this.features = data[1];
+            if (this.vehicle.id)
+            this.vehicle = data[2];
+        }, err => {
+            if (err.status == 404)
+                this.router.navigate(['/home']);
+        });
+
+
+    }
 
   onMakeChange() {
       var selectedMake = this.makes.find(m => m.id == this.vehicle.makeId);
