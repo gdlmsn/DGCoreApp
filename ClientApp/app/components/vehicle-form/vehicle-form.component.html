@@ -59,6 +59,7 @@
             </mat-error>
         </mat-form-field>
         <button mat-button>SUBMIT</button>
+        <button type="button" mat-button *ngIf="vehicle.id" (click)="delete()">DELETE</button>
     </form>
 </mat-card>
 <mat-card>
