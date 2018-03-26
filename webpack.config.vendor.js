@@ -15,6 +15,7 @@ const treeShakableModules = [
     '@angular/material',
     'ng2-toasty',
     'ng2-toasty/bundles/style-material.css',
+    'underscore',
     'zone.js',
 ];
 const nonTreeShakableModules = [

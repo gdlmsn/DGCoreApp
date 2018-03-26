@@ -5,7 +5,7 @@
     <form #f="ngForm" (ngSubmit)="submit()" novalidate>
 
         <mat-form-field>
-            <mat-select placeholder="Make" id="make" (change)="onMakeChange()" [(ngModel)]="vehicle.makeId" name="makeId" required #make="ngModel">
+            <mat-select [(value)]="selectedMake" placeholder="Make" id="make" (change)="onMakeChange()" [(ngModel)]="vehicle.makeId" name="makeId" required #make="ngModel">
                 <mat-option value="option"></mat-option>
                 <mat-option *ngFor="let m of makes" value="{{m.id}}">{{m.name}}</mat-option>
             </mat-select>
@@ -21,7 +21,7 @@
             </mat-select>
             <mat-error>
                 <span *ngIf="!model.valid && model.touched"> Please select a Model</span>
-            </mat-error>
+            </mat-error> 
         </mat-form-field>
         <!--<h2>Features</h2>
 
